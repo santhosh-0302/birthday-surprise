@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>For Inika ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* ================= GLOBAL STYLE ================= */
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #ffe6f0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .section {
+            display: none;
+            padding: 30px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        h1,
+        h2 {
+            color: #ff2e63;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            background: #ff2e63;
+            color: white;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        img {
+            max-inline-size: 90%;
+            border-radius: 15px;
+            margin: 10px;
+        }
+
+        /* ================= INTRO PAGE ================= */
+
+        #introPage {
+            position: fixed;
+            inline-size: 100%;
+            block-size: 100vh;
+            background: black;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        #introCanvas {
+            display: block;
+        }
+
+        #introContent {
+            position: absolute;
+            inset-block-start: 55%;
+            inset-inline-start: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            transition: 2s;
+        }
+
+        #introContent h1 {
+            color: #ff4da6;
+            font-size: 38px;
+            text-shadow: 0 0 20px #ff4da6, 0 0 40px #ff1a75;
+            margin: 0;
+        }
+
+        #introContent p {
+            color: white;
+            margin-block-start: 10px;
+        }
+
+
+        /*  Photo img*/
+
+           /*  for image sizxe  */
+           .moment-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.moment-gallery img {
+    inline-size: 110px;   /* reduce here */
+    block-size: auto;
+    border-radius: 15px;
+}
+
+      
+
+        /* ================= ENVELOPE ================= */
+
+        .envelope-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-inline-size: 600px;
+            margin: 30px auto;
+        }
+
+        .envelope {
+            background: #ff8fab;
+            padding: 18px;
+            border-radius: 15px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .envelope:hover {
+            transform: scale(1.1);
+        }
+
+        .message-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            max-inline-size: 500px;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+
+     
+        /* ================= CAKE ================= */
+
+       .cake-wrapper {
+    position: relative;
+    block-size: 300px;
+    margin-block-start: 60px;   /* pushes cake slightly down */
+    display: flex;
+    justify-content: center;   /* center horizontally */
+    align-items: flex-end;     /* keeps it slightly lower */
+    }
+
+        .cake {
+            position: relative;
+            inline-size: 260px;
+            block-size: 150px;
+            margin: 0 auto;
+        }
+
+        .cake-base {
+            position: absolute;
+            inset-block-end: 0;
+            inline-size: 100%;
+            block-size: 120px;
+            background: #ff6f91;
+            border-radius: 20px;
+        }
+
+        .candle {
+            inline-size: 12px;
+            block-size: 45px;
+            background: white;
+            position: absolute;
+            inset-block-end: 130px;
+            inset-inline-start: 50%;
+            transform: translateX(-50%);
+        }
+
+        .flame {
+            position: absolute;
+            inset-block-end: 175px;
+            inset-inline-start: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            animation: flicker 0.4s infinite alternate;
+        }
+
+        @keyframes flicker {
+            from {
+                transform: translateX(-50%) scale(1);
+            }
+
+            to {
+                transform: translateX(-50%) scale(1.3);
+            }
+        }
+
+        .smoke {
+            position: absolute;
+            inset-block-end: 175px;
+            inset-inline-start: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+        }
+
+        .confetti {
+            position: fixed;
+            inline-size: 10px;
+            block-size: 10px;
+            animation: fall 3s linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh);
+            }
+
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* ================= FLOATING HEARTS ================= */
+
+        .heart {
+            position: fixed;
+            inset-block-end: 0;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= INTRO SECTION ================= -->
+
+    <div id="introPage">
+        <canvas id="introCanvas"></canvas>
+        <div id="introContent">
+            <h1>Happy Birthday Thangooo 💖</h1>
+            <p>You are my unexpected gift forever ✨</p>
+            <button onclick="startWebsite()">Click to Continue ❤️</button>
+        </div>
+    </div>
+
+    <!-- ================= PASSWORD SECTION ================= -->
+
+    <div id="passwordSection" class="section active">
+        <h2>Enter Password ❤️</h2>
+        <p>Hint: First payment number 😘+ Your birthday Date today 😊 + Our favourite timing (Totally 6 digit Each two thangoo kandupudi pakalam) 💙</p>
+        <input type="password" id="passInput">
+        <br>
+        <button onclick="checkPass()">Unlock</button>
+        <p id="passError" style="color:red;"></p>
+    </div>
+
+    <!-- ================= TYPING SECTION ================= -->
+
+    <div id="typingSection" class="section">
+        <h1 id="typeText"></h1>
+    </div>
+
+    <!-- ================= TEASE SECTION ================= -->
+
+    <div id="teaseSection" class="section">
+        <h2>I have something special for you 😌</h2>
+        <button onclick="show('questionSection')">Continue</button>
+    </div>
+
+    <!-- ================= YES / NO SECTION ================= -->
+
+    <div id="questionSection" class="section">
+        <h2>Am I your only favorite person?😉 💖</h2>
+        <button onclick="show('catSection')">Yes 😍</button>
+        <button id="noBtn" onmouseover="moveNo()">No 😉</button>
+    </div>
+
+    <!-- ================= CAT SECTION ================= -->
+
+    <div id="catSection" class="section">
+        <h2>Yayyy I knew it 😍🐱</h2>
+        <img src="cat.jpg">
+        <button onclick="show('momentSection')">Continue</button>
+    </div>
+
+    <!-- =================  width: 180px;   /* reduce here */
+    height: auto;
+    border-radius: 15px;S SECTION ================= -->
+
+<div id="momentSection" class="section">
+    <h2>Your Beautiful Moments 🌸</h2>
+
+    <div class="moment-gallery">
+
+        <img src="moment_f.jpg">
+        <img src="moment.jpg">
+        <img src="moment_b.jpg">
+        <img src="moment_g.jpg">
+        <img src="moment_a.jpg">
+        <img src="moment5.jpg">
+        <img src="moment2.jpg">
+        <img src="moment6.jpg">
+        <img src="moment7.jpg">
+        
+    <img src="moment1.jpg">
+    <img src="moment3.jpg">
+    <img src="moment4.jpg">
+    </div>
+    <button onclick="show('eyesSection')">Next</button>
+</div>
+
+    <!-- ================= EYES SECTION ================= -->
+
+    <div id="eyesSection" class="section">
+        <h2>Your Eyes 👀✨</h2>
+        <img src="eyes_1.jpg">
+        <p>Unaku already theriym Unoda eyes enaku romba pudikkum… epovume romba pudikkum. Paathu taa irukkanum pola thonum. Appadi oru azhaga irukkum.
+        👀✨❤️❤️</p>
+        <button onclick="show('envelopeSection')">Next</button>
+    </div>
+
+    <!-- ================= NEW ENVELOPE SECTION ================= -->
+
+    <div id="envelopeSection" class="section">
+        <h2>Something From My Heart 💌</h2>
+
+        <div class="envelope-grid">
+            <div class="envelope" onclick="openQuestion(1)">Just You 💖</div>
+            <div class="envelope" onclick="openQuestion(2)">You Matter ✨</div>
+            <div class="envelope" onclick="openQuestion(3)">A Memory 📸</div>
+            <div class="envelope" onclick="openQuestion(4)">Still You ❤️</div>
+        </div>
+
+        <div id="questionArea"></div>
+
+        <button onclick="show('cakeSection')">Next ❤️</button>
+    </div>
+
+    <!-- ================= CAKE SECTION ================= -->
+
+    <div id="cakeSection" class="section">
+        <h2>🎂 Cut the Cake</h2>
+
+        <div class="cake-wrapper">
+            <div class="cake">
+                <div class="cake-base"></div>
+                <div class="candle"></div>
+                <div class="flame" id="flame">🔥</div>
+                <div class="smoke" id="smoke">💨</div>
+            </div>
+        </div>
+
+        <button onclick="cutCake()">Cut ❤️</button>
+        <p id="cakeMsg"></p>
+    </div>
+
+    <!-- ================= PROPOSAL SECTION ================= -->
+
+    <div id="proposalSection" class="section">
+        <h2>Unaku naa oru chinna gift vechrukaa ❤️,Once Again Happy birtday Kutty maa 😊💕</h2>
+        <p>Morning 11:11 illa night 11:11 online  marakama online vaa okvaa… romba periya gift illa, chinna gift dhaan… aana adhu enoda heartla
+        irundhu unmaiyana gift😊💙</p>
+        <h2> Wrong payment vandhalum, enoda life kuu correct person nee mathum dhaan 💙😊
+        Nee enoda lifeah correct panna epavum enkooda varuveya…?
+        Life fullah en kooda nadandhu varuveya? 🥺✨</h2>
+    </div>
+
+    <script>
+
+        /* ================= INTRO HEART ANIMATION ================= */
+
+        const canvas = document.getElementById("introCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+
+        function heartShape(t) {
+            let x = 16 * Math.pow(Math.sin(t), 3);
+            let y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+            return { x, y };
+        }
+
+        class Particle {
+            constructor(x, y) { this.x = x; this.y = y; this.baseX = x; this.baseY = y; this.size = 2; }
+            draw() { ctx.fillStyle = "#ff4da6"; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+            update() { this.x += (this.baseX - this.x) / 20; this.y += (this.baseY - this.y) / 20; }
+        }
+
+        for (let t = 0; t < Math.PI * 2; t += 0.02) {
+            let pos = heartShape(t);
+            let x = canvas.width / 2 + pos.x * 20;
+            let y = canvas.height / 2 + pos.y * 20 - 50;
+            particles.push(new Particle(x, y));
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        setTimeout(() => { document.getElementById("introContent").style.opacity = 1; }, 1500);
+
+        function startWebsite() {
+            document.getElementById("introPage").style.display = "none";
+        }
+
+        /* ================= FLOW CONTROL ================= */
+
+        function show(id) {
+            document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+            document.getElementById(id).classList.add("active");
+        }
+
+        /* ================= PASSWORD ================= */
+
+        function checkPass() {
+            if (document.getElementById("passInput").value === "273111") {
+                show("typingSection");
+                typeText();
+            } else {
+                document.getElementById("passError").innerText = "Wrong password Konjam think pana easy tha Kutty maa 😜";
+            }
+        }
+
+        /* ================= TYPING EFFECT ================= */
+
+       function typeText() {
+
+            let text = `Happy Birthday Inika, My Unexpected Gift ❤️😊💕
+
+Unoda life la nee nenachathu ellam nadakkanum.
+I am wishing you a truly beautiful and blessed year ahead ✨
+
+Enoda life la first time oru ponukaga ippadi oru surprise ready panren… adhuvum unakaga dhaan 💖
+Nee epovum happy ah irukanum… adhu dhaan enaku mukkiyam.
+
+Ippo unoda special date start aayiduchu… so full ah enjoy pannu, sirichu sirichu iru 😊
+
+Itha unakaga dhaan anupuren.
+Nee ippo entha mindset la irundhalum… enoda wish one dhaan 
+Nee epovum sandhoshama, nimmadhiya irukanum.
+
+Because un happiness enaku romba mukkiyam ❤️ and una enaku epavum nomba nomba pudikum 😊 
+
+ (Konjam wait panu next page varum........)`;
+
+            let i = 0;
+
+            let typing = setInterval(() => {
+                document.getElementById("typeText").innerText = text.slice(0, i);
+                i++;
+
+                if (i > text.length) {
+                    clearInterval(typing);
+                    setTimeout(() => show("teaseSection"), 5000);
+                }
+
+            }, 80);  // you can reduce speed here (40 = smooth)
+        }
+
+        /* ================= YES / NO ================= */
+    function moveNo() {
+        let btn = document.getElementById("noBtn");
+
+        btn.style.position = "absolute";
+
+        /* Add smooth movement */
+        btn.style.transition = "all 0.6s ease";
+
+        /* Move smaller distance */
+        btn.style.left = Math.random() * 60 + "%";
+        btn.style.top = Math.random() * 60 + "%";
+    }
+
+        /* ================= ENVELOPE QUESTIONS ================= */
+
+        function openQuestion(id) {
+            let question = "";
+            let correct = "";
+            let wrong = "";
+
+            if (id == 1) {
+                question = "Enoda life la first girl friend maari special ah irundhathu yaaru?” 😌💖💕";
+                correct = "You";
+                wrong = "vera yarachuu😡";
+            }
+            if (id == 2) {
+                question = "Indha birthday la unaku romba pudicha notification yaaru? 😄💖 ✨";
+                correct = "Santhosh saa😂";
+                wrong = " Illa others saa";
+            }
+            if (id == 3) {
+                question = "Un presence, un voice, un chinna chinna habits adhellam enakku romba pudikum. Nee nenacha vida adhigama pudikum.";
+            }
+            if (id == 4) {
+                question =`Unoda life la nee neriya kashtam paathiruka… aana nee kandipa nalla varuva.
+                Evlo kashtamaana naal vandhaalum, en choice maaradhu adhu innum nee dhaa❤️ `;
+              
+            }
+
+            document.getElementById("questionArea").innerHTML =
+                `<div class="message-box">
+<h3>${question}</h3>
+<button onclick="checkAnswer(true)">${correct}</button>
+<button onclick="checkAnswer(false)">${wrong}</button>
+</div>`;
+        }
+
+        function checkAnswer(isCorrect) {
+            if (isCorrect) {
+                document.getElementById("questionArea").innerHTML =
+                    "<div class='message-box'>Correct 😍 Because it's always YOU ❤️</div>";
+            } else {
+                document.getElementById("questionArea").innerHTML =
+                    "<div class='message-box'>Wrong 😜 Olunga theripi try panu thangameyaa💕😊 !</div>";
+            }
+        }
+
+        /* ================= CAKE CUTTING ================= */
+
+        function cutCake() {
+            document.getElementById("flame").style.opacity = "0";
+            document.getElementById("smoke").style.opacity = "1";
+
+            for (let i = 0; i < 120; i++) {
+                let conf = document.createElement("div");
+                conf.className = "confetti";
+                conf.style.left = Math.random() * 100 + "vw";
+                conf.style.background = `hsl(${Math.random() * 360},100%,50%)`;
+                document.body.appendChild(conf);
+                setTimeout(() => conf.remove(), 3000);
+            }
+
+            document.getElementById("cakeMsg").innerHTML =
+                "Unaku cream pudikathu theriyum 😏 cake mathum sapduuu 😁💖";
+
+            setTimeout(() => show("proposalSection"), 6000);
+        }
+
+        /* ================= FLOATING HEARTS ================= */
+
+        setInterval(() => {
+            let heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "💗";
+            heart.style.left = Math.random() * 100 + "vw";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }, 800);
+
+    </script>
+
+</body>
+
+</html>
