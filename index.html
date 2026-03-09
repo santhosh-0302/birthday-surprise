@@ -368,23 +368,45 @@ background:#1ed760;
 
 <div id="songSection" class="section">
 
-<h2>🎧 Your Favourite Songs</h2>
+<h2>Unaku pudicha sila songs 😊🎧🎶  
+        Subscription illa 😌 Ads illa Spotify 😅📢 </h2>
 
 <div class="playlist">
 
 <div class="song">
-<span>🎵 Munbe Vaa</span>
+<span>🎵 Dandiya Aataamum Aada</span>
 <button onclick="playSong('song1')">▶</button>
+<button onclick="stopSong('song1')">⏹</button>
 </div>
 
 <div class="song">
-<span>🎵 Vaseegara</span>
+<span>🎵 Inika special song💖</span>
 <button onclick="playSong('song2')">▶</button>
+<button onclick="stopSong('song2')">⏹</button>  
 </div>
 
 <div class="song">
-<span>🎵 Nenjukkul Peidhidum</span>
+<span>🎵Aakkam pakkaam</span>
 <button onclick="playSong('song3')">▶</button>
+<button onclick="stopSong('song3')">⏹</button> 
+</div>
+    
+    <div class="song">
+<span>🎵Siraguagaaal </span>
+<button onclick="playSong('song4')">▶</button>
+<button onclick="stopSong('song4')">⏹</button> 
+    </div>
+    
+    <div class="song">
+<span>🎵 Ayyo Ayyo song from M.kumar</span>
+<button onclick="playSong('song5')">▶</button>
+<button onclick="stopSong('song5')">⏹</button> 
+</div>
+
+    <div class="song">
+<span>🎵 End of Beginning </span>
+<button onclick="playSong('song6')">▶</button>
+<button onclick="stopSong('song6')">⏹</button> 
 </div>
 
 </div>
@@ -392,6 +414,10 @@ background:#1ed760;
 <audio id="song1" src="song1.mp3"></audio>
 <audio id="song2" src="song2.mp3"></audio>
 <audio id="song3" src="song3.mp3"></audio>
+    
+<audio id="song4" src="song4.mp3"></audio>
+<audio id="song5" src="song5.mp3"></audio>
+<audio id="song6" src="song6.mp3"></audio>
 
 <button onclick="show('eyesSection')">Next ❤️</button>
 
@@ -614,6 +640,10 @@ function playSong(id){
 document.getElementById("song1").pause();
 document.getElementById("song2").pause();
 document.getElementById("song3").pause();
+    document.getElementById("song4").pause();
+    document.getElementById("song5").pause();
+    document.getElementById("song6").pause();
+    
 
 document.getElementById(id).play();
 
@@ -665,6 +695,7 @@ song.currentTime = 0;
 
 
 </html>
+
 
 
 
