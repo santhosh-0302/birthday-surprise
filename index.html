@@ -319,7 +319,44 @@
     <img src="moment3.jpg">
     <img src="moment4.jpg">
     </div>
-    <button onclick="show('eyesSection')">Next</button>
+    
+    <button onclick="show('songSection')">Go to Favourite Songs 🎶</button>
+</div>
+    <!-- ================= SONG SECTION ================= -->
+
+<div id="songSection" class="section">
+
+<h2>Your Favourite Songs 🎶</h2>
+
+<div class="playlist">
+
+<div class="song">
+<p>🎵 Munbe Vaa</p>
+<button onclick="playSong('song1')">▶ Play</button>
+<button onclick="stopSong('song1')">⏹ Stop</button>
+</div>
+
+<div class="song">
+<p>🎵 Vaseegara</p>
+<button onclick="playSong('song2')">▶ Play</button>
+<button onclick="stopSong('song2')">⏹ Stop</button>
+</div>
+
+<div class="song">
+<p>🎵 Nenjukkul Peidhidum</p>
+<button onclick="playSong('song3')">▶ Play</button>
+<button onclick="stopSong('song3')">⏹ Stop</button>
+</div>
+
+</div>
+
+<audio id="song1" src="song1.mp3"></audio>
+<audio id="song2" src="song2.mp3"></audio>
+<audio id="song3" src="song3.mp3"></audio>
+
+<br>
+<button onclick="show('eyesSection')">Next ❤️</button>
+
 </div>
 
     <!-- ================= EYES SECTION ================= -->
@@ -532,6 +569,25 @@ Because un happiness enaku romba mukkiyam ❤️ and una enaku epavum nomba nomb
                     "<div class='message-box'>Wrong 😜 Olunga theripi try panu thangameyaa💕😊 !</div>";
             }
         }
+        /* ================= SONG PLAYER ================= */
+
+function playSong(id){
+
+document.getElementById("song1").pause();
+document.getElementById("song2").pause();
+document.getElementById("song3").pause();
+
+document.getElementById(id).play();
+
+}
+
+function stopSong(id){
+
+let song = document.getElementById(id);
+song.pause();
+song.currentTime = 0;
+
+}
 
         /* ================= CAKE CUTTING ================= */
 
@@ -571,6 +627,7 @@ Because un happiness enaku romba mukkiyam ❤️ and una enaku epavum nomba nomb
 
 
 </html>
+
 
 
 
