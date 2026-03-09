@@ -261,6 +261,28 @@ font-weight:bold;
 background:#1ed760;
 }
 
+        /* ================= OX GAME ================= */
+
+.board{
+display:grid;
+grid-template-columns:repeat(3,80px);
+gap:10px;
+justify-content:center;
+margin:20px auto;
+}
+
+.cell{
+width:80px;
+height:80px;
+background:white;
+border-radius:10px;
+font-size:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+
         /* ================= FLOATING HEARTS ================= */
 
         .heart {
@@ -418,6 +440,31 @@ background:#1ed760;
 <audio id="song4" src="song4.mp3"></audio>
 <audio id="song5" src="song5.mp3"></audio>
 <audio id="song6" src="song6.mp3"></audio>
+
+<button onclick="show('gameSection')">Next ❤️</button>
+
+</div>
+
+    <!-- ================= GAME SECTION ================= -->
+
+<div id="gameSection" class="section">
+
+<h2>Small Game Before Next Surprise 😜</h2>
+<p>Play OX with me 😌</p>
+
+<div id="board" class="board">
+<div class="cell" onclick="playerMove(this,0)"></div>
+<div class="cell" onclick="playerMove(this,1)"></div>
+<div class="cell" onclick="playerMove(this,2)"></div>
+<div class="cell" onclick="playerMove(this,3)"></div>
+<div class="cell" onclick="playerMove(this,4)"></div>
+<div class="cell" onclick="playerMove(this,5)"></div>
+<div class="cell" onclick="playerMove(this,6)"></div>
+<div class="cell" onclick="playerMove(this,7)"></div>
+<div class="cell" onclick="playerMove(this,8)"></div>
+</div>
+
+<p id="gameResult"></p>
 
 <button onclick="show('eyesSection')">Next ❤️</button>
 
@@ -678,6 +725,63 @@ song.currentTime = 0;
             setTimeout(() => show("proposalSection"), 6000);
         }
 
+        /* ================= OX GAME ================= */
+
+let board = ["","","","","","","","",""];
+let player = "X";
+let computer = "O";
+
+function playerMove(cell,index){
+
+if(board[index]!="") return;
+
+board[index]=player;
+cell.innerText="❌";
+
+checkGame();
+
+setTimeout(computerMove,500);
+
+}
+
+function computerMove(){
+
+let empty = board.map((v,i)=>v==""?i:null).filter(v=>v!=null);
+
+if(empty.length==0) return;
+
+let move = empty[Math.floor(Math.random()*empty.length)];
+
+board[move]=computer;
+
+document.getElementsByClassName("cell")[move].innerText="⭕";
+
+checkGame();
+
+}
+
+function checkGame(){
+
+let win=[
+[0,1,2],[3,4,5],[6,7,8],
+[0,3,6],[1,4,7],[2,5,8],
+[0,4,8],[2,4,6]
+];
+
+for(let w of win){
+
+let a=w[0],b=w[1],c=w[2];
+
+if(board[a] && board[a]==board[b] && board[a]==board[c]){
+
+document.getElementById("gameResult").innerText =
+board[a]=="X" ? "You Win 😍" : "Computer Win 😜";
+
+}
+}
+
+}
+
         /* ================= FLOATING HEARTS ================= */
 
         setInterval(() => {
@@ -695,6 +799,7 @@ song.currentTime = 0;
 
 
 </html>
+
 
 
 
