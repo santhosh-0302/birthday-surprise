@@ -221,6 +221,46 @@
             }
         }
 
+        /* ================= SPOTIFY STYLE PLAYLIST ================= */
+
+.playlist{
+max-width:500px;
+margin:30px auto;
+background:#121212;
+padding:20px;
+border-radius:15px;
+}
+
+.song{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#1e1e1e;
+padding:12px 15px;
+margin:10px 0;
+border-radius:10px;
+color:white;
+font-size:16px;
+}
+
+.song:hover{
+background:#2a2a2a;
+}
+
+.song button{
+background:#1db954;
+border:none;
+color:white;
+padding:8px 15px;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.song button:hover{
+background:#1ed760;
+}
+
         /* ================= FLOATING HEARTS ================= */
 
         .heart {
@@ -324,28 +364,23 @@
 </div>
     <!-- ================= SONG SECTION ================= -->
 
-<div id="songSection" class="section">
-
-<h2>Your Favourite Songs 🎶</h2>
+<h2>🎧 Your Favourite Songs</h2>
 
 <div class="playlist">
 
 <div class="song">
-<p>🎵 Munbe Vaa</p>
-<button onclick="playSong('song1')">▶ Play</button>
-<button onclick="stopSong('song1')">⏹ Stop</button>
+<span>🎵 Munbe Vaa</span>
+<button onclick="playSong('song1')">▶</button>
 </div>
 
 <div class="song">
-<p>🎵 Vaseegara</p>
-<button onclick="playSong('song2')">▶ Play</button>
-<button onclick="stopSong('song2')">⏹ Stop</button>
+<span>🎵 Vaseegara</span>
+<button onclick="playSong('song2')">▶</button>
 </div>
 
 <div class="song">
-<p>🎵 Nenjukkul Peidhidum</p>
-<button onclick="playSong('song3')">▶ Play</button>
-<button onclick="stopSong('song3')">⏹ Stop</button>
+<span>🎵 Nenjukkul Peidhidum</span>
+<button onclick="playSong('song3')">▶</button>
 </div>
 
 </div>
@@ -354,10 +389,7 @@
 <audio id="song2" src="song2.mp3"></audio>
 <audio id="song3" src="song3.mp3"></audio>
 
-<br>
 <button onclick="show('eyesSection')">Next ❤️</button>
-
-</div>
 
     <!-- ================= EYES SECTION ================= -->
 
@@ -627,6 +659,7 @@ song.currentTime = 0;
 
 
 </html>
+
 
 
 
